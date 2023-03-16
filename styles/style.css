@@ -1,0 +1,25 @@
+.container {
+  width: 100%;
+  height: 100vh;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-template-areas: "n1 n2 n2 n2" "n1 n3 n3 n3";
+}
+
+header {
+  background-color: red;
+  grid-area: n1;
+}
+
+.slider {
+  background-color: blue;
+  grid-area: n2;
+}
+
+.container-cards {
+  background-color: orange;
+  grid-area: n3;
+}
+
+/*# sourceMappingURL=style.css.map */
