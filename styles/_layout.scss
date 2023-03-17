@@ -1,0 +1,49 @@
+body {
+    background-color: #fff;
+}
+
+.container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 2fr 1fr 280px;
+    grid-template-areas: "topbar slider slider slider slider"
+        "topbar primary-cards primary-cards primary-cards primary-cards"
+        "topbar secondary-cards secondary-cards secondary-cards secondary-cards";
+}
+
+header {
+    grid-area: topbar;
+}
+
+.slider {
+    grid-area: slider;
+}
+
+.primary-cards {
+    grid-area: primary-cards;
+}
+
+.secondary-cards {
+    grid-area: secondary-cards;
+}
+
+@media only screen and (max-width:880px) {
+   
+    .container {
+        height: auto;
+        grid-template-columns: 1fr;
+        grid-template-rows: 210px repeat(auto-fill, minmax(19rem, 1fr));
+        grid-template-areas: "topbar"
+            "slider"
+            "primary-cards"
+            "secondary-cards";
+    }
+   
+    .sidebar-menu::-webkit-scrollbar{
+        scrollbar-width: none;
+                display: none;
+                 width: 0 !important
+    }
+}

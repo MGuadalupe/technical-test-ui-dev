@@ -1,40 +1,444 @@
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Regular.ttf") format("truetype");
+  font-weight: regular;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Medium.ttf") format("truetype");
+  font-weight: 500;
+  font-style: medium;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Bold.ttf") format("truetype");
+  font-weight: 700;
+  font-style: bold;
+}
+@font-face {
+  font-family: "Roboto";
+  src: url("../fonts/Roboto-Black.ttf") format("truetype");
+  font-weight: 900;
+  font-style: black;
+}
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+
+p {
+  font-size: 1.3em;
+}
+
+body {
+  background-color: #fff;
+}
+
 .container {
   width: 100%;
   height: 100vh;
   display: grid;
-  grid-gap: 1em;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(2, 1fr) 0.5fr;
-  grid-template-areas: "topbar slider slider slider" "topbar primary-cards primary-cards primary-cards" "topbar secondary-cards secondary-cards secondary-cards";
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: 2fr 1fr 280px;
+  grid-template-areas: "topbar slider slider slider slider" "topbar primary-cards primary-cards primary-cards primary-cards" "topbar secondary-cards secondary-cards secondary-cards secondary-cards";
 }
 
 header {
-  background-color: red;
   grid-area: topbar;
 }
 
 .slider {
-  background-color: blue;
   grid-area: slider;
 }
 
 .primary-cards {
-  background-color: orange;
   grid-area: primary-cards;
 }
 
 .secondary-cards {
-  background-color: pink;
   grid-area: secondary-cards;
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: 880px) {
   .container {
     height: auto;
-    min-height: 100vh;
     grid-template-columns: 1fr;
-    grid-template-rows: 1fr, repeat(auto-fill, minmax(1rem, 1fr));
+    grid-template-rows: 210px repeat(auto-fill, minmax(19rem, 1fr));
     grid-template-areas: "topbar" "slider" "primary-cards" "secondary-cards";
+  }
+  .sidebar-menu::-webkit-scrollbar {
+    scrollbar-width: none;
+    display: none;
+    width: 0 !important;
+  }
+}
+body {
+  font-family: "Roboto";
+  letter-spacing: 0.05em;
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+ul,
+li {
+  padding: 0;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  font-family: "Roboto";
+  font-weight: 700;
+  font-size: 1.3em;
+}
+
+header {
+  background-color: #264cac;
+}
+header .sidebar-container {
+  padding-top: 30px;
+  display: grid;
+  gap: 2em;
+}
+header .sidebar-container .sidebar-buttons {
+  padding: 0 30px;
+}
+header .sidebar-container .sidebar-buttons button {
+  margin-bottom: 20px;
+  background-color: #506ebd;
+  border-radius: 5px;
+  padding: 15px 40px;
+  min-width: 150px;
+  color: rgba(255, 255, 255, 0.81);
+  display: flex;
+  align-items: center;
+  font-size: 1.5em;
+}
+header .sidebar-container .sidebar-buttons button img {
+  margin-right: 10px;
+  width: 35px;
+}
+header .sidebar-container .sidebar-menu ul {
+  list-style: none;
+  padding: 0 10px;
+  display: grid;
+  gap: 2em;
+}
+header .sidebar-container .sidebar-menu ul li {
+  margin: 0 15px;
+  text-transform: uppercase;
+  font-family: "Roboto";
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.81);
+  font-size: 1em;
+  color: rgba(255, 255, 255, 0.81);
+}
+header .sidebar-container .sidebar-menu ul li a {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.81);
+}
+header .sidebar-container .sidebar-menu ul li img {
+  width: 38px;
+  margin: 0 10px 5px 10px;
+}
+
+.slider .slide {
+  background-image: url("../assets/img/slider_base2.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: top right;
+  height: 100%;
+  background-color: #fff;
+}
+.slider .slide .slide-text {
+  color: #1e1e1e;
+  padding: 3em;
+}
+.slider .slide .slide-text h1 {
+  font-size: 4em;
+  margin-bottom: 10px;
+}
+.slider .slide .slide-text .description {
+  font-size: 1.8em;
+}
+.slider .slide .slide-text .description h3 {
+  background-color: #ffe682;
+  display: inline-block;
+  text-align: center;
+}
+.slider .dots {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  bottom: 40px;
+}
+.slider .dots > div {
+  z-index: 1;
+  border-radius: 100%;
+  width: 10px;
+  height: 10px;
+  background-color: #808080;
+  display: flex;
+  margin: 6px;
+}
+.slider .dots > div:first-child {
+  background-color: #328ff1;
+}
+
+.primary-cards,
+.secondary-cards {
+  margin: 0 3em 3em 3em;
+  display: grid;
+  gap: 1.5rem;
+  grid-auto-rows: auto;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.primary-cards .banner {
+  background-color: #328ff1;
+  border-radius: 7px;
+  max-width: 100%;
+  overflow: hidden;
+  height: 130px;
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.primary-cards .banner img {
+  object-fit: contain;
+  height: 100%;
+}
+.primary-cards .banner h2 {
+  color: rgba(255, 255, 255, 0.81);
+  font-weight: 500;
+  padding: 20px;
+}
+.primary-cards .banner h2 span {
+  font-size: 1.8em;
+  color: #ffd119;
+}
+.primary-cards .card h2 {
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding-bottom: 20px;
+  grid-column: span 1;
+}
+.card > img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 7px 7px 0 0;
+}
+.card .card-body {
+  margin: 20px;
+}
+.card .card-body ul {
+  list-style: none;
+}
+.card .card-body ul li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card .card-body ul li > div:first-child {
+  display: flex;
+  align-items: center;
+}
+.card .card-body ul li > div:first-child img {
+  width: 30px;
+  margin-right: 10px;
+}
+.card .card-body ul li > div:last-child {
+  display: flex;
+  width: 80px;
+  align-items: center;
+  justify-content: space-between;
+}
+.card .card-body ul li > div:last-child img:first-child {
+  width: 20px;
+}
+.card .card-body ul hr {
+  margin: 15px -20px;
+  opacity: 0.4;
+}
+.card .card-footer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+.card .card-footer button {
+  text-transform: uppercase;
+  font-family: "Roboto";
+  font-weight: 500;
+  color: #328ff1;
+  font-size: 1.2em;
+  margin: 0 15px;
+  background-color: transparent;
+}
+
+.card.card-no-list .card-body {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0;
+}
+
+@media only screen and (max-width: 1260px) {
+  .slider .slide {
+    background-size: cover;
+  }
+  .primary-cards .card:last-child {
+    grid-column: 1/-1;
+  }
+  .secondary-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+  .secondary-cards .card > img {
+    height: 250px;
+  }
+  .secondary-cards .card:first-child {
+    grid-column: 1/-1;
+  }
+  .secondary-cards .card:first-child > img {
+    height: 150px;
+  }
+}
+@media only screen and (min-width: 880px) {
+  header .sidebar-container .sidebar-buttons button {
+    font-size: 1.2em;
+    padding: 15px 20px;
+  }
+}
+@media only screen and (max-width: 880px) and (min-width: 589px) {
+  header .sidebar-container .sidebar-menu ul {
+    justify-content: center;
+  }
+}
+@media only screen and (max-width: 880px) {
+  header {
+    overflow-x: hidden;
+  }
+  header .sidebar-container {
+    gap: 0;
+  }
+  header .sidebar-container .sidebar-buttons {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  header .sidebar-container .sidebar-buttons button {
+    margin-bottom: 10px;
+  }
+  header .sidebar-container .sidebar-menu {
+    overflow: scroll;
+    margin-right: 30px;
+  }
+  header .sidebar-container .sidebar-menu ul {
+    display: flex;
+    list-style: none;
+    padding: 0 10px;
+    gap: 0;
+  }
+  header .sidebar-container .sidebar-menu ul li {
+    margin: 0 15px;
+    text-transform: uppercase;
+    font-family: "Roboto";
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.81);
+    font-size: 1em;
+    color: rgba(255, 255, 255, 0.81);
+    flex-shrink: 0;
+  }
+  header .sidebar-container .sidebar-menu ul li a {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.81);
+    text-align: center;
+  }
+  header .sidebar-container .sidebar-menu ul li a p {
+    font-size: 1.1em;
+  }
+  header .sidebar-container .sidebar-menu ul li a img {
+    margin-bottom: 5px;
+  }
+  header .sidebar-container .sidebar-menu ul li li:last-child {
+    padding-right: 40px;
+  }
+  header .slider .slide .slide-text {
+    padding: 2em;
+  }
+}
+@media screen and (max-width: 768px) {
+  .slider .slide .slide-text h1 {
+    font-size: 3em;
+  }
+  .slider .slide .slide-text .description {
+    max-width: 250px;
+    font-size: 1.5em;
+  }
+}
+@media screen and (max-width: 695px) {
+  .banner {
+    grid-row-start: 2;
+  }
+  .primary-cards,
+  .secondary-cards {
+    margin: 1em;
+  }
+}
+@media screen and (max-width: 552px) {
+  .slider .slide .slide-text {
+    padding: 2em 1.5em 1.5em 1.5em;
+  }
+  .slider .slide .slide-text h1 {
+    font-size: 1.8em;
+  }
+  .slider .slide .slide-text .description {
+    max-width: 160px;
+    font-size: 1em;
+  }
+}
+@media screen and (max-width: 465px) {
+  .container {
+    grid-template-rows: 280px repeat(auto-fill, minmax(19rem, 1fr));
+  }
+  .sidebar-buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+  .slider .slide {
+    background-size: contain;
+    background-image: url("../assets/img/slider_base.jpg");
+  }
+  .slider .slide .slide-text {
+    padding: 2em 1.5em 0.7em 0.7em;
   }
 }
 

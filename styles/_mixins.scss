@@ -1,0 +1,13 @@
+@mixin fontMix($font-weigth: 400, $font-color: $text-color-primary, $font-size: 1em) {
+    font-family: $font-primary;
+    font-weight: $font-weigth;
+    color: $font-color;
+    font-size: $font-size;
+}
+
+@mixin elementsPosition($direction: column, $justify-content: center, $align-items: center) {
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $justify-content;
+    align-items: $align-items;
+}

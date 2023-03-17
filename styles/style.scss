@@ -1,44 +1,262 @@
-.container {
-    width: 100%;
-    height: 100vh;
-    display: grid;
-    grid-gap: 1em;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(2, 1fr) 0.5fr;
-    grid-template-areas: "topbar slider slider slider"
-        "topbar primary-cards primary-cards primary-cards"
-        "topbar secondary-cards secondary-cards secondary-cards";
+//imports
+@use '_fonts.scss';
+@use '_layout.scss';
+@import '_variables.scss';
+@import '_mixins.scss';
+
+
+
+body {
+    font-family: 'Roboto';
+    letter-spacing: 0.05em;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li {
+    padding: 0;
+}
+
+button {
+    border: none;
+    box-shadow: none;
+    cursor: pointer;
+    outline: none;
+    font-family: "Roboto";
+    font-weight: 700;
+    font-size: 1.3em;
 }
 
 header {
-    background-color: red;
-    grid-area: topbar;
+    background-color: $primary-color;
+
+    .sidebar-container {
+        padding-top: 30px;
+        display: grid;
+        gap: 2em;
+        // @include elementsPosition();
+
+        .sidebar-buttons {
+                padding: 0 30px;
+            button {
+                margin-bottom: 20px;
+                background-color: #506ebd;
+                border-radius: 5px;
+                padding: 15px 40px;
+                min-width: 150px;
+                color: rgba(255, 255, 255, 0.81);
+                display: flex;
+                align-items: center;
+                font-size: 1.5em;
+                img{
+                    margin-right:10px;
+                    width:35px;
+                }
+            }
+        }
+
+        .sidebar-menu {
+            ul {
+                list-style: none;
+                padding: 0 10px;
+                display: grid;
+                gap: 2em;
+
+                li {
+                    margin: 0 15px;
+                    text-transform: uppercase;
+                    @include fontMix($font-weigth: 500, $font-color: $text-color-secondary, $font-size: 1em);
+                    color: $text-color-secondary;
+
+                    a {
+                        @include elementsPosition($direction: row, $justify-content:flex-start);
+                        color: $text-color-secondary ;
+                        
+                    }
+
+                    img {
+                        width: 38px;
+                        margin:0 10px 5px 10px;
+                    }
+                }
+
+            }
+        }
+     }
 }
 
 .slider {
-    background-color: blue;
-    grid-area: slider;
+    .slide {
+        background-image: url('../assets/img/slider_base2.jpg');
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: top right;
+        height: 100%;
+        background-color: #fff;
+
+        .slide-text {
+            color: $text-color-primary;
+            padding: 3em;
+
+            h1 {
+
+                font-size: 4em;
+                margin-bottom: 10px;
+            }
+
+            .description {
+                font-size: 1.8em;
+
+                h3 {
+                    background-color: #ffe682;
+                    display: inline-block;
+                    text-align: center;
+                }
+            }
+        }
+    }
+
+    .dots {
+        @include elementsPosition($direction: row);
+        position: relative;
+        bottom: 40px;
+
+        >div {
+            z-index: 1;
+            border-radius: 100%;
+            width: 10px;
+            height: 10px;
+            background-color: #808080;
+            display: flex;
+            margin: 6px;
+        }
+
+        >div:first-child {
+            background-color: $secondary-color-active;
+        }
+    }
+}
+
+.primary-cards,
+.secondary-cards {
+    margin: 0 3em 3em 3em;
+    display: grid;
+    gap: 1.5rem;
+    grid-auto-rows: auto;
+    grid-template-columns: repeat(auto-fit, minmax(min(18rem, 30rem), 1fr));
 }
 
 .primary-cards {
-    background-color: orange;
-    grid-area: primary-cards;
-}
+    .banner {
+        background-color: $secondary-color-active;
+        border-radius: 7px;
+        max-width: 100%;
+        overflow: hidden;
+        height: 130px;
+        grid-column: 1/-1;
+        @include elementsPosition($direction: row, $justify-content: space-between, $align-items: center);
 
-.secondary-cards {
-    background-color: pink;
-    grid-area: secondary-cards;
-}
+        img {
+            object-fit: contain;
+            height: 100%;
+        }
 
-@media only screen and (max-width:550px) {
-    .container {
-        height: auto;
-        min-height: 100vh;
-        grid-template-columns: 1fr;
-        grid-template-rows: 1fr, repeat(auto-fill, minmax(1rem, 1fr));
-        grid-template-areas: "topbar"
-            "slider"
-            "primary-cards"
-            "secondary-cards";
+        h2 {
+            color: $text-color-secondary;
+            font-weight: 500;
+            padding: 20px;
+         span {
+                font-size: 1.8em;
+                color: #ffd119;
+            }
+        }
+    }
+    .card{
+        h2{
+            margin-bottom:30px;
+        }
     }
 }
+
+.card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    padding-bottom: 20px;
+    grid-column: span 1;
+
+    >img {
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 7px 7px 0 0;
+    }
+
+    .card-body {
+        margin: 20px;
+        
+        ul {
+            list-style: none;
+
+            li {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                >div:first-child {
+                    display: flex;
+                    align-items: center;
+
+                    img {
+                        width: 30px;
+                        margin-right: 10px;
+                    }
+
+
+                }
+
+                >div:last-child {
+                    display: flex;
+                    width: 80px;
+                    align-items: center;
+                    justify-content: space-between;
+
+                    img:first-child {
+                        width: 20px;
+                    }
+                }
+
+            }
+
+            hr {
+                margin: 15px -20px;
+                opacity: 0.4;
+            }
+        }
+    }
+
+    .card-footer {
+        @include elementsPosition($direction: row, $justify-content: flex-end, $align-items: center);
+
+        button {
+            text-transform: uppercase;
+            @include fontMix($font-weigth: 500, $font-color: $secondary-color-active, $font-size: 1.2em);
+            margin: 0 15px;
+            background-color: transparent;
+        }
+    }
+
+}
+
+.card.card-no-list .card-body {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 0;
+}
+
+@import '_mediaqueries.scss';
