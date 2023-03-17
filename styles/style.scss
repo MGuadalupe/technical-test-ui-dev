@@ -39,7 +39,6 @@ header {
         padding-top: 30px;
         display: grid;
         gap: 2em;
-        // @include elementsPosition();
 
         .sidebar-buttons {
                 padding: 0 30px;
@@ -76,11 +75,13 @@ header {
                     a {
                         @include elementsPosition($direction: row, $justify-content:flex-start);
                         color: $text-color-secondary ;
-                        
+                        p{
+                            font-size:1em;
+                        }
                     }
 
                     img {
-                        width: 38px;
+                        width: 20px;
                         margin:0 10px 5px 10px;
                     }
                 }
@@ -183,7 +184,7 @@ header {
     }
 }
 
-.card {
+.primary-cards .card , .secondary-cards .card{
     background-color: white;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -253,10 +254,14 @@ header {
 
 }
 
-.card.card-no-list .card-body {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0;
+.card.card-no-list{
+     margin-bottom:5em;
+      .card-body {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 0;
+    }
 }
+
 
 @import '_mediaqueries.scss';

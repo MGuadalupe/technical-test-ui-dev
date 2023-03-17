@@ -39,11 +39,9 @@ body {
 }
 
 .container {
-  width: 100%;
-  height: 100vh;
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-template-rows: 2fr 1fr 280px;
+  grid-template-columns: 20vw repeat(4, 1fr);
+  grid-template-rows: 300px 1fr 280px;
   grid-template-areas: "topbar slider slider slider slider" "topbar primary-cards primary-cards primary-cards primary-cards" "topbar secondary-cards secondary-cards secondary-cards secondary-cards";
 }
 
@@ -150,8 +148,11 @@ header .sidebar-container .sidebar-menu ul li a {
   align-items: center;
   color: rgba(255, 255, 255, 0.81);
 }
+header .sidebar-container .sidebar-menu ul li a p {
+  font-size: 1em;
+}
 header .sidebar-container .sidebar-menu ul li img {
-  width: 38px;
+  width: 20px;
   margin: 0 10px 5px 10px;
 }
 
@@ -238,58 +239,58 @@ header .sidebar-container .sidebar-menu ul li img {
   margin-bottom: 30px;
 }
 
-.card {
+.primary-cards .card, .secondary-cards .card {
   background-color: white;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   padding-bottom: 20px;
   grid-column: span 1;
 }
-.card > img {
+.primary-cards .card > img, .secondary-cards .card > img {
   width: 100%;
   height: 150px;
   object-fit: cover;
   border-radius: 7px 7px 0 0;
 }
-.card .card-body {
+.primary-cards .card .card-body, .secondary-cards .card .card-body {
   margin: 20px;
 }
-.card .card-body ul {
+.primary-cards .card .card-body ul, .secondary-cards .card .card-body ul {
   list-style: none;
 }
-.card .card-body ul li {
+.primary-cards .card .card-body ul li, .secondary-cards .card .card-body ul li {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.card .card-body ul li > div:first-child {
+.primary-cards .card .card-body ul li > div:first-child, .secondary-cards .card .card-body ul li > div:first-child {
   display: flex;
   align-items: center;
 }
-.card .card-body ul li > div:first-child img {
+.primary-cards .card .card-body ul li > div:first-child img, .secondary-cards .card .card-body ul li > div:first-child img {
   width: 30px;
   margin-right: 10px;
 }
-.card .card-body ul li > div:last-child {
+.primary-cards .card .card-body ul li > div:last-child, .secondary-cards .card .card-body ul li > div:last-child {
   display: flex;
   width: 80px;
   align-items: center;
   justify-content: space-between;
 }
-.card .card-body ul li > div:last-child img:first-child {
+.primary-cards .card .card-body ul li > div:last-child img:first-child, .secondary-cards .card .card-body ul li > div:last-child img:first-child {
   width: 20px;
 }
-.card .card-body ul hr {
+.primary-cards .card .card-body ul hr, .secondary-cards .card .card-body ul hr {
   margin: 15px -20px;
   opacity: 0.4;
 }
-.card .card-footer {
+.primary-cards .card .card-footer, .secondary-cards .card .card-footer {
   display: flex;
   flex-direction: row;
   justify-content: flex-end;
   align-items: center;
 }
-.card .card-footer button {
+.primary-cards .card .card-footer button, .secondary-cards .card .card-footer button {
   text-transform: uppercase;
   font-family: "Roboto";
   font-weight: 500;
@@ -299,6 +300,9 @@ header .sidebar-container .sidebar-menu ul li img {
   background-color: transparent;
 }
 
+.card.card-no-list {
+  margin-bottom: 5em;
+}
 .card.card-no-list .card-body {
   display: flex;
   justify-content: space-between;
@@ -326,7 +330,13 @@ header .sidebar-container .sidebar-menu ul li img {
     height: 150px;
   }
 }
-@media only screen and (min-width: 880px) {
+@media only screen and (min-width: 881px) {
+  header {
+    position: fixed;
+    height: 100%;
+    width: 20vw;
+    min-width: 210px;
+  }
   header .sidebar-container .sidebar-buttons button {
     font-size: 1.2em;
     padding: 15px 20px;

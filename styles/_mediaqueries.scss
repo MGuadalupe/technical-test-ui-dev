@@ -3,9 +3,9 @@
 
 @import '_mixins.scss';
 
+//tablet
 @media only screen and (max-width:1260px) {
-    
-    .slider {
+   .slider {
         .slide {
             background-size: cover;
         }
@@ -34,22 +34,29 @@
 
 
 }
-@media only screen and (min-width:880px){
-    header .sidebar-container .sidebar-buttons button{
-        font-size:1.2em;
-        padding:15px 20px;
+
+//smartphones
+@media only screen and (min-width:881px){
+    
+    header {
+        position: fixed;
+        height: 100%;
+        width:20vw;
+        min-width:210px;
+        .sidebar-container .sidebar-buttons button{
+            font-size:1.2em;
+            padding:15px 20px;
+        }
     }
 }
 
- @media only screen and (max-width:880px) and (min-width : 589px){
+@media only screen and (max-width:880px) and (min-width : 589px){
     header .sidebar-container .sidebar-menu ul{
         justify-content:center;
     }
  } 
 
 @media only screen and (max-width:880px) {
-    
-
     header {
         overflow-x: hidden;
         .sidebar-container{
